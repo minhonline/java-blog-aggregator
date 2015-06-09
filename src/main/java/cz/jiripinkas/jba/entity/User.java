@@ -17,18 +17,18 @@ public class User {
 	private Integer id;
 
 	private String name;
-	
+
 	private String email;
-	
+
 	private String password;
-	
+
 	@ManyToMany
 	@JoinTable
 	private List<Role> roles;
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user")
 	private List<Blog> blogs;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -36,7 +36,7 @@ public class User {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -76,7 +76,5 @@ public class User {
 	public void setBlogs(List<Blog> blogs) {
 		this.blogs = blogs;
 	}
-	
-	
-	
+
 }
