@@ -43,5 +43,6 @@
 		factory-class="org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean"
 		transaction-manager-ref="transactionManager"
 		entity-manager-factory-ref="emf"></jpa:repositories>
-
+	
+	<import resource="security.xml"/>
 </beans>
