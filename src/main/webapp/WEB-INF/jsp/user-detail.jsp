@@ -5,7 +5,12 @@
 
 <script type="text/javascript">
 	$(function(){
-		$('.nav-tabs a:first').tab('show');
+		$('.nav-tabs a:first').tab('show');	
+		$(".triggerRemove").click(function(e){
+			e.preventDefault();
+			$('#removeBtn').attr("href",$(this).attr("href"));
+			$('#removeModal').modal();
+		});
 	});
 </script>
 
@@ -70,7 +75,7 @@
 			<div role="tabpanel" class="tab-pane" id="blog_${blog.id}">
 				<h1>${blog.name}</h1>
 				
-				<p><a href="/blog/remove/${blog.id}.html" class="btn btn-danger">Remove blog</a>${blog.url}</p>
+				<p><a href="/blog/remove/${blog.id}.html" class="btn btn-danger triggerRemove">Remove blog</a>${blog.url}</p>
 				<table class="table table-bordered table-hover table-striped">
 					<thead>
 						<tr>
@@ -89,5 +94,24 @@
 				</table>
 			</div>
 		</c:forEach>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Remove blog</h4>
+	      </div>
+	      <div class="modal-body">
+	        Really remove?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	        <a href="" class="btn btn-danger" id="removeBtn">Remove</a>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 </div>
