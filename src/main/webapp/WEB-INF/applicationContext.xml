@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 
+
 	<context:component-scan base-package="cz.jiripinkas.jba">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
