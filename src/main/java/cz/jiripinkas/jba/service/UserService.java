@@ -68,6 +68,10 @@ public class UserService {
 
 	public User findOneWithName(String userName) {
 		User user = userRepository.findByName(userName);		
-		return findOneWithBlog(user.getId());
+		return findOne(user.getId());
+	}
+
+	public void delete(int id) {
+		userRepository.delete(id);		
 	}
 }

@@ -42,7 +42,7 @@ public class UserController {
 
 	@RequestMapping("/user/{id}")
 	public String detail(Model model, @PathVariable int id) {
-		model.addAttribute("user", userService.findOneWithBlog(id));
+		model.addAttribute("user", userService.findOne(id));
 		return "user-detail";
 	}
 
@@ -68,5 +68,17 @@ public class UserController {
 	public String doBlog(@ModelAttribute("blog") Blog blog, Principal principal ) {
 		blogService.save(blog, principal.getName());
 		return "redirect:/account.html";
+	}
+	
+	@RequestMapping(value="/blog/remove/{id}")
+	public String removeBlog(@PathVariable("id") int id){
+		blogService.delete(id);
+		return "redirect:/account.html";
+	}
+	
+	@RequestMapping(value="/user/remove/{id}")
+	public String removeUser(@PathVariable("id") int id){
+		userService.delete(id);
+		return "redirect:/users.html";
 	}
 }
