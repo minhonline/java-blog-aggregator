@@ -76,4 +76,8 @@
 	 	<param-name>defaultHtmlEscape</param-name>
 	 	<param-value>true</param-value>
 	 </context-param>
+	 
+	 <session-config>
+	 	<session-timeout>10</session-timeout>
+	 </session-config>
 </web-app>
