@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cz.jiripinkas.jba.entity.Blog;
+import cz.jiripinkas.jba.exception.RssException;
 import cz.jiripinkas.jba.service.BlogService;
 import cz.jiripinkas.jba.service.UserService;
 
@@ -41,7 +42,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/account", method = RequestMethod.POST)
-	public String doBlog(Model model, @Valid @ModelAttribute("blog") Blog blog, BindingResult result, Principal principal) {
+	public String doBlog(Model model, @Valid @ModelAttribute("blog") Blog blog, BindingResult result, Principal principal) throws RssException {
 		if (result.hasErrors()) {
 			return account(model, principal);
 		}

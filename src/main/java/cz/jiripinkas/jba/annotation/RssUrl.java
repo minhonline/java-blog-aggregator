@@ -11,8 +11,8 @@ import javax.validation.Payload;
 
 @Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = { UniqueUsernameValidatior.class })
-public @interface UniqueUsername {
+@Constraint(validatedBy = { RssUrlValidator.class })
+public @interface RssUrl {
 	
 	String message();
 

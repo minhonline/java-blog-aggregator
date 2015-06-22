@@ -51,7 +51,7 @@ public class InitDBService {
 		userAdmin.setName("admin");
 		userAdmin.setEnabled(true);
 		BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
-		userAdmin.setPassword(crypt.encode("admin"));
+		userAdmin.setPassword(crypt.encode("haiminh"));
 		List<Role> roles = new ArrayList<Role>();
 		roles.add(roleAdmin);
 		roles.add(roleUser);		
@@ -59,23 +59,23 @@ public class InitDBService {
 		userRepository.save(userAdmin);
 
 		Blog blogJava = new Blog();
-		blogJava.setName("Java");
-		blogJava.setUrl("http://vnexpress.net");
+		blogJava.setName("Javavids");
+		blogJava.setUrl("http://feeds.feedburner.com/javavids?format=xml");
 		blogJava.setUser(userAdmin);
 		blogRepository.save(blogJava);
 
-		Item item1 = new Item();
-		item1.setBlog(blogJava);
-		item1.setTitle("first");
-		item1.setLink("http://tuoitre.vn");
-		item1.setPublishedDate(new Date());
-		itemRepository.save(item1);
-
-		Item item2 = new Item();
-		item2.setBlog(blogJava);
-		item2.setTitle("second");
-		item2.setLink("http://tuoitre.vn");
-		item2.setPublishedDate(new Date());
-		itemRepository.save(item2);
+//		Item item1 = new Item();
+//		item1.setBlog(blogJava);
+//		item1.setTitle("first");
+//		item1.setLink("http://tuoitre.vn");
+//		item1.setPublishedDate(new Date());
+//		itemRepository.save(item1);
+//
+//		Item item2 = new Item();
+//		item2.setBlog(blogJava);
+//		item2.setTitle("second");
+//		item2.setLink("http://tuoitre.vn");
+//		item2.setPublishedDate(new Date());
+//		itemRepository.save(item2);
 	}
 }

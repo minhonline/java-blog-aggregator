@@ -3,6 +3,7 @@ package cz.jiripinkas.jba.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.URL;
+
+import cz.jiripinkas.jba.annotation.RssUrl;
 
 @Entity
 public class Blog {
@@ -25,6 +28,8 @@ public class Blog {
 
 	@Size(min = 1, message = "Invalid URL!")
 	@URL(message = "Invalid URL!")
+	@Column(length=1000)
+	@RssUrl(message = "This URL is not a RSS URL")
 	private String url;
 
 	@ManyToOne
