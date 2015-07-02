@@ -2,6 +2,7 @@ package cz.jiripinkas.jba.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -56,7 +57,10 @@ public class UserService extends AbstractService{
 	}
 
 	public User save(User user) {
-		user.setEnabled(true);
+		String confirmId = UUID.randomUUID().toString();
+		System.out.println(confirmId);
+		user.setConfirmId(confirmId);
+		user.setEnabled(false);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
 		

@@ -35,6 +35,7 @@ public class TemplateSendEmail {
 					.getTemplate("registerUser.ftl");
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("name", user.getName());
+			map.put("id", user.getConfirmId());
 			htmlText = FreeMarkerTemplateUtils.processTemplateIntoString(tpl,
 					map);
 		} catch (Exception e) {

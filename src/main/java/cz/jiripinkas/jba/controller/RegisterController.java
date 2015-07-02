@@ -41,8 +41,8 @@ public class RegisterController {
 		if (result.hasErrors()) {
 			return "user-register";
 		}
-		User user1 = userService.save(user);
-		templateSendEmail.sendTemplateMail(user1);
+		userService.save(user);
+		templateSendEmail.sendTemplateMail(user);
 		return "redirect:/register.html?success=true";
 	}
 	

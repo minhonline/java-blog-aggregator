@@ -1,1 +1,2 @@
-This is a test email from a java application. User name is: ${name}
+Thank for your registration ${name}
+Please forward this link to complete your registration http://localhost:8080/register/confirm?id=${id}

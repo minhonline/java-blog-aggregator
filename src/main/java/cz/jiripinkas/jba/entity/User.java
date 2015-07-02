@@ -36,6 +36,8 @@ public class User {
 	private String password;
 
 	private boolean enabled;
+	
+	private String confirmId;
 
 	@ManyToMany
 	@JoinTable
@@ -99,5 +101,14 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+
+	public String getConfirmId() {
+		return confirmId;
+	}
+
+	public void setConfirmId(String confirmId) {
+		this.confirmId = confirmId;
+	}
+	
 
 }
