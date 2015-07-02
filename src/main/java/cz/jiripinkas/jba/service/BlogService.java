@@ -17,7 +17,7 @@ import cz.jiripinkas.jba.repository.ItemRepository;
 import cz.jiripinkas.jba.repository.UserRepository;
 
 @Service
-public class BlogService {
+public class BlogService extends AbstractService {
 
 	@Autowired
 	private BlogRepository blogRepository;

@@ -25,7 +25,7 @@ import cz.jiripinkas.jba.rss.TRssChannel;
 import cz.jiripinkas.jba.rss.TRssItem;
 
 @Service
-public class RssService {
+public class RssService extends AbstractService{
 	
 	public List<Item> getItems(String url) throws RssException{
 		return getItems(new StreamSource(url));

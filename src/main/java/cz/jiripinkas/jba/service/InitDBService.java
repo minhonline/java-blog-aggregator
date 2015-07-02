@@ -23,7 +23,7 @@ import cz.jiripinkas.jba.repository.UserRepository;
 
 @Transactional
 @Service
-public class InitDBService {
+public class InitDBService extends AbstractService{
 
 	@Autowired
 	private RoleRepository roleRepository;

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="propertyConfigurer"  
+    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+    <property name="ignoreUnresolvablePlaceholders" value="true"/>  
+    <property name="locations">  
+        <list>  
+            <value>classpath:/ApplicationResources.properties</value>  
+        </list>  
+    </property>  
+</bean>  
+
+<!-- freemarker configuration -->  
+<!-- <bean id="freemarkerConfiguration"   -->
+<!--     class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">   -->
+<!--     <property name="preferFileSystemAccess" value="false" />   -->
+<!--     <property name="freemarkerSettings">   -->
+<!--         <props>   -->
+<!--             <prop key="localized_lookup">false</prop>   -->
+<!--             <prop key="template_update_delay">5</prop>   -->
+<!--             <prop key="cache_storage">strong:20, soft:20</prop>   -->
+<!--             <prop key="url_escaping_charset">UTF-8</prop>   -->
+<!--             <prop key="output_encoding">UTF-8</prop>   -->
+<!--         </props>   -->
+<!--     </property>   -->
+<!--     <property name="templateLoaderPath" value="classpath:/templates/" />   -->
+<!--     <property name="defaultEncoding" value="UTF-8" />   -->
+<!-- </bean>   -->
+
+<bean id="freemarkerConfiguration"
+			class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
+			<property name="templateLoaderPath" value="classpath:/templates/" />
+			<property name="defaultEncoding" value="UTF-8" />
+</bean>
+  
+  
+<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">  
+    <property name="host" value="${mail.host}" />  
+    <property name="username" value="${mail.username}" />  
+    <property name="password" value="${mail.password}" />  
+    <property name="port" value="587" /> 
+    <property name="protocol" value="smtp" /> 
+    <property name="javaMailProperties">  
+        <props>  
+<!--             <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>   -->
+<!--             <prop key="mail.smtp.socketFactory.fallback">false</prop>   -->
+<!--             <prop key="mail.smtp.port">25</prop>   -->
+<!--             <prop key="mail.smtp.socketFactory.port">465</prop>   -->
+<!--             <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>   -->
+<!--             <prop key="mail.smtp.timeout">25000</prop>   -->
+            <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+            <prop key="mail.smtp.starttls.enable">true</prop>                                
+            <prop key="mail.smtp.auth">true</prop>
+        </props>  
+    </property>  
+</bean>  
+  
+<bean id="templateSendEmail" class="cz.jiripinkas.jba.service.TemplateSendEmail">       
+    <property name="sender" ref="javaMailSender"></property>       
+    <property name="freemarkerConfiguration" ref="freemarkerConfiguration"></property>       
+</bean>   
+
+</beans>

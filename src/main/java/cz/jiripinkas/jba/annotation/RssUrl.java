@@ -19,5 +19,5 @@ public @interface RssUrl {
 	Class<?>[] groups() default { };
 
 	Class<? extends Payload>[] payload() default { };
-
+	
 }

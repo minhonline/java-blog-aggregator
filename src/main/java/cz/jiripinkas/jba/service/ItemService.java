@@ -11,7 +11,7 @@ import cz.jiripinkas.jba.entity.Item;
 import cz.jiripinkas.jba.repository.ItemRepository;
 
 @Service
-public class ItemService {
+public class ItemService extends AbstractService{
 	
 	@Autowired
 	private ItemRepository itemRepository;

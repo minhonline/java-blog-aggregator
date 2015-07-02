@@ -1,0 +1,1 @@
+This is a test email from a java application. User name is: ${name}

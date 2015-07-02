@@ -22,7 +22,7 @@ import cz.jiripinkas.jba.repository.UserRepository;
 
 @Service
 @Transactional
-public class UserService {
+public class UserService extends AbstractService{
 
 	@Autowired
 	private UserRepository userRepository;
@@ -55,7 +55,7 @@ public class UserService {
 		return user;
 	}
 
-	public void save(User user) {
+	public User save(User user) {
 		user.setEnabled(true);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
@@ -63,7 +63,7 @@ public class UserService {
 		List<Role> roles = new ArrayList<Role>();
 		roles.add(roleRepository.findByName("ROLE_USER"));
 		user.setRoles(roles);
-		userRepository.save(user);		
+		return userRepository.save(user);		
 	}
 
 	public User findOneWithName(String userName) {

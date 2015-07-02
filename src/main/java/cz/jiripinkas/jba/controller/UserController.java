@@ -48,6 +48,7 @@ public class UserController {
 		}
 		blogService.save(blog, principal.getName());
 		return "redirect:/account.html";
+		
 	}
 
 	@RequestMapping(value = "/blog/remove/{id}")

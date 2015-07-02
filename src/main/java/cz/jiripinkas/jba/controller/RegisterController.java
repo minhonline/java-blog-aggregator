@@ -1,5 +1,6 @@
 package cz.jiripinkas.jba.controller;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cz.jiripinkas.jba.entity.User;
+import cz.jiripinkas.jba.service.TemplateSendEmail;
 import cz.jiripinkas.jba.service.UserService;
 
 @Controller
@@ -20,6 +22,9 @@ public class RegisterController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private TemplateSendEmail templateSendEmail;
 	
 	@ModelAttribute("user")
 	public User constructUser() {
@@ -32,11 +37,12 @@ public class RegisterController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String doRegister(@Valid @ModelAttribute("user") User user, BindingResult result) {
+	public String doRegister(@Valid @ModelAttribute("user") User user, BindingResult result) throws MessagingException {
 		if (result.hasErrors()) {
 			return "user-register";
 		}
-		userService.save(user);
+		User user1 = userService.save(user);
+		templateSendEmail.sendTemplateMail(user1);
 		return "redirect:/register.html?success=true";
 	}
 	
