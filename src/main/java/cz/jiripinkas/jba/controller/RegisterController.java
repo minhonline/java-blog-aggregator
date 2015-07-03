@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,6 +52,14 @@ public class RegisterController {
 	public String available(@RequestParam String username) {
 		Boolean isUserExist = userService.findOne(username) == null;
 		return isUserExist.toString();
+	}
+	
+	@RequestMapping(value="/confirm/{id}")
+	public String confirm(@PathVariable("id") String id){
+		boolean isSuccess = userService.confirmRegistration(id);
+		if(isSuccess)
+			return "registration-success";
+		return "registration-error";
 	}
 	
 }

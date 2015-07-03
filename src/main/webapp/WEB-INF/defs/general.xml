@@ -3,6 +3,10 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+	<definition name="registerCommon" template="/WEB-INF/layout/classic-no-menu.jsp">
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
 	<definition name="common" template="/WEB-INF/layout/classic.jsp">
 		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
 	</definition>
@@ -41,6 +45,18 @@
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
 		<put-attribute name="current" value="login" />
+	</definition>
+	
+	<definition name="registration-error" extends="registerCommon" >
+		<put-attribute name="title" value="registration error" />
+		<put-attribute name="body" value="/WEB-INF/jsp/registration-error.jsp" />
+		<put-attribute name="current" value="error" />
+	</definition>
+	
+	<definition name="registration-success" extends="registerCommon">
+		<put-attribute name="title" value="registration success" />
+		<put-attribute name="body" value="/WEB-INF/jsp/registration-success.jsp" />
+		<put-attribute name="current" value="success" />
 	</definition>
 	
 </tiles-definitions>

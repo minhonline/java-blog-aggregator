@@ -82,6 +82,16 @@ public class UserService extends AbstractService{
 	public User findOne(String username) {
 		return userRepository.findByName(username);
 	}
+
+	public boolean confirmRegistration(String id) {
+		User user = userRepository.findByConfirmId(id);
+		if(user == null){
+			return false;
+		}
+		user.setEnabled(true);
+		userRepository.save(user);
+		return true;
+	}
 	
 	
 }
